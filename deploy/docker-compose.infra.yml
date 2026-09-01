@@ -1,0 +1,69 @@
+services:
+  # 1. PostgreSQL with pgvector extension
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: architect-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: architect_db
+      POSTGRES_USER: architect_user
+      POSTGRES_PASSWORD: architect_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-scripts/01-init-pgvector.sql:/docker-entrypoint-initdb.d/01-init-pgvector.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U architect_user -d architect_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - architect-net
+
+  # 2. Redis for Distributed Cache & Agent Session Memory
+  redis:
+    image: redis:7-alpine
+    container_name: architect-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - architect-net
+
+  # 3. RabbitMQ for Event-Driven Microservices communication
+  rabbitmq:
+    image: rabbitmq:3.13-management-alpine
+    container_name: architect-rabbitmq
+    restart: unless-stopped
+    environment:
+      RABBITMQ_DEFAULT_USER: architect_rabbit
+      RABBITMQ_DEFAULT_PASS: architect_rabbit_pass
+    ports:
+      - "5672:5672"   # AMQP protocol
+      - "15672:15672" # Web Management UI
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 15s
+      timeout: 10s
+      retries: 5
+    networks:
+      - architect-net
+
+volumes:
+  postgres_data:
+  redis_data:
+  rabbitmq_data:
+
+networks:
+  architect-net:
+    driver: bridge

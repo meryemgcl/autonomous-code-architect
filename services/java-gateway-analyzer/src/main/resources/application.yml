@@ -1,0 +1,25 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: java-gateway-analyzer
+  rabbitmq:
+    host: ${SPRING_RABBITMQ_HOST:localhost}
+    port: ${SPRING_RABBITMQ_PORT:5672}
+    username: ${SPRING_RABBITMQ_USERNAME:architect_rabbit}
+    password: ${SPRING_RABBITMQ_PASSWORD:architect_rabbit_pass}
+
+grpc:
+  server:
+    port: 9090
+  client:
+    dotnet-engine:
+      address: 'static://${DOTNET_GRPC_HOST:localhost}:${DOTNET_GRPC_PORT:5001}'
+      negotiationType: PLAINTEXT
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics

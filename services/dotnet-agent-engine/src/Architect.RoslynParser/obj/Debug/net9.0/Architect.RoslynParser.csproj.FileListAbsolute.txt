@@ -1,0 +1,16 @@
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.RoslynParser\bin\Debug\net9.0\Architect.RoslynParser.deps.json
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.RoslynParser\bin\Debug\net9.0\Architect.RoslynParser.dll
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.RoslynParser\bin\Debug\net9.0\Architect.RoslynParser.pdb
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.RoslynParser\bin\Debug\net9.0\Architect.Core.dll
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.RoslynParser\bin\Debug\net9.0\Architect.Core.pdb
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.RoslynParser\obj\Debug\net9.0\Architect.RoslynParser.csproj.AssemblyReference.cache
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.RoslynParser\obj\Debug\net9.0\Architect.RoslynParser.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.RoslynParser\obj\Debug\net9.0\Architect.RoslynParser.AssemblyInfoInputs.cache
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.RoslynParser\obj\Debug\net9.0\Architect.RoslynParser.AssemblyInfo.cs
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.RoslynParser\obj\Debug\net9.0\Architect.RoslynParser.csproj.CoreCompileInputs.cache
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.RoslynParser\obj\Debug\net9.0\Architect.RoslynParser.sourcelink.json
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.RoslynParser\obj\Debug\net9.0\Architec.D11F8A18.Up2Date
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.RoslynParser\obj\Debug\net9.0\Architect.RoslynParser.dll
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.RoslynParser\obj\Debug\net9.0\refint\Architect.RoslynParser.dll
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.RoslynParser\obj\Debug\net9.0\Architect.RoslynParser.pdb
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.RoslynParser\obj\Debug\net9.0\ref\Architect.RoslynParser.dll

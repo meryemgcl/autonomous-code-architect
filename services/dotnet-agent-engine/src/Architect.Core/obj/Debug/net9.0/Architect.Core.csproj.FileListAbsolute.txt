@@ -1,0 +1,12 @@
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Core\bin\Debug\net9.0\Architect.Core.deps.json
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Core\bin\Debug\net9.0\Architect.Core.dll
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Core\bin\Debug\net9.0\Architect.Core.pdb
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Core\obj\Debug\net9.0\Architect.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Core\obj\Debug\net9.0\Architect.Core.AssemblyInfoInputs.cache
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Core\obj\Debug\net9.0\Architect.Core.AssemblyInfo.cs
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Core\obj\Debug\net9.0\Architect.Core.csproj.CoreCompileInputs.cache
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Core\obj\Debug\net9.0\Architect.Core.sourcelink.json
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Core\obj\Debug\net9.0\Architect.Core.dll
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Core\obj\Debug\net9.0\refint\Architect.Core.dll
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Core\obj\Debug\net9.0\Architect.Core.pdb
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Core\obj\Debug\net9.0\ref\Architect.Core.dll

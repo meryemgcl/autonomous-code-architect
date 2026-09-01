@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Architect.Core\Architect.Core.csproj" />
+    <ProjectReference Include="..\Architect.Application\Architect.Application.csproj" />
+    <ProjectReference Include="..\Architect.RoslynParser\Architect.RoslynParser.csproj" />
+    <ProjectReference Include="..\Architect.Contracts\Architect.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,7 @@
+{
+  "requestId": "req-live-100",
+  "filePath": "src/Domain/Orders/OrderService.cs",
+  "sourceCode": "namespace MyCompany.Domain.Orders;\n\nusing Microsoft.AspNetCore.Mvc;\nusing System;\nusing System.Threading.Tasks;\n\npublic class OrderService\n{\n    private string dbApiKey = \"sk_live_998877665544332211\";\n\n    public async void ProcessPaymentAsync()\n    {\n        try\n        {\n            await Task.Delay(50);\n        }\n        catch (Exception)\n        {\n        }\n    }\n}",
+  "language": "CSHARP",
+  "enableAiAgents": false
+}

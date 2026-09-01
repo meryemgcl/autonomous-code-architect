@@ -1,0 +1,12 @@
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Infrastructure\bin\Debug\net9.0\Architect.Infrastructure.deps.json
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Infrastructure\bin\Debug\net9.0\Architect.Infrastructure.dll
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Infrastructure\bin\Debug\net9.0\Architect.Infrastructure.pdb
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Infrastructure\obj\Debug\net9.0\Architect.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Infrastructure\obj\Debug\net9.0\Architect.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Infrastructure\obj\Debug\net9.0\Architect.Infrastructure.AssemblyInfo.cs
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Infrastructure\obj\Debug\net9.0\Architect.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Infrastructure\obj\Debug\net9.0\Architect.Infrastructure.sourcelink.json
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Infrastructure\obj\Debug\net9.0\Architect.Infrastructure.dll
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Infrastructure\obj\Debug\net9.0\refint\Architect.Infrastructure.dll
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Infrastructure\obj\Debug\net9.0\Architect.Infrastructure.pdb
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Infrastructure\obj\Debug\net9.0\ref\Architect.Infrastructure.dll

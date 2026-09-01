@@ -1,0 +1,12 @@
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Application\bin\Debug\net9.0\Architect.Application.deps.json
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Application\bin\Debug\net9.0\Architect.Application.dll
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Application\bin\Debug\net9.0\Architect.Application.pdb
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Application\obj\Debug\net9.0\Architect.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Application\obj\Debug\net9.0\Architect.Application.AssemblyInfoInputs.cache
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Application\obj\Debug\net9.0\Architect.Application.AssemblyInfo.cs
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Application\obj\Debug\net9.0\Architect.Application.csproj.CoreCompileInputs.cache
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Application\obj\Debug\net9.0\Architect.Application.sourcelink.json
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Application\obj\Debug\net9.0\Architect.Application.dll
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Application\obj\Debug\net9.0\refint\Architect.Application.dll
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Application\obj\Debug\net9.0\Architect.Application.pdb
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Application\obj\Debug\net9.0\ref\Architect.Application.dll

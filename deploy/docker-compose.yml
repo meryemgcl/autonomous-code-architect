@@ -1,0 +1,100 @@
+services:
+  # 1. PostgreSQL with pgvector extension
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: architect-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: architect_db
+      POSTGRES_USER: architect_user
+      POSTGRES_PASSWORD: architect_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-scripts/01-init-pgvector.sql:/docker-entrypoint-initdb.d/01-init-pgvector.sql
+    networks:
+      - architect-net
+
+  # 2. Redis for Distributed Cache & Agent Memory
+  redis:
+    image: redis:7-alpine
+    container_name: architect-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - architect-net
+
+  # 3. RabbitMQ for Event Queue
+  rabbitmq:
+    image: rabbitmq:3.13-management-alpine
+    container_name: architect-rabbitmq
+    restart: unless-stopped
+    environment:
+      RABBITMQ_DEFAULT_USER: architect_rabbit
+      RABBITMQ_DEFAULT_PASS: architect_rabbit_pass
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    networks:
+      - architect-net
+
+  # 4. Java & Spring Boot 3 Gateway Analyzer
+  java-gateway:
+    build:
+      context: ../
+      dockerfile: services/java-gateway-analyzer/Dockerfile
+    container_name: architect-java-gateway
+    restart: unless-stopped
+    ports:
+      - "8080:8080" # REST & Webhook Port
+      - "9090:9090" # Java gRPC Port
+    environment:
+      SPRING_RABBITMQ_HOST: rabbitmq
+      SPRING_RABBITMQ_PORT: 5672
+      SPRING_RABBITMQ_USERNAME: architect_rabbit
+      SPRING_RABBITMQ_PASSWORD: architect_rabbit_pass
+      DOTNET_GRPC_HOST: dotnet-engine
+      DOTNET_GRPC_PORT: 5001
+    depends_on:
+      - rabbitmq
+      - redis
+    networks:
+      - architect-net
+
+  # 5. .NET 9 Roslyn & AI Agent Engine
+  dotnet-engine:
+    build:
+      context: ../
+      dockerfile: services/dotnet-agent-engine/Dockerfile
+    container_name: architect-dotnet-engine
+    restart: unless-stopped
+    ports:
+      - "5000:5000" # Web API & Health Port
+      - "5001:5001" # .NET gRPC Port
+    environment:
+      ConnectionStrings__Postgres: "Host=postgres;Port=5432;Database=architect_db;Username=architect_user;Password=architect_password"
+      ConnectionStrings__Redis: "redis:6379"
+      RabbitMQ__Host: "rabbitmq"
+      RabbitMQ__Username: "architect_rabbit"
+      RabbitMQ__Password: "architect_rabbit_pass"
+    depends_on:
+      - postgres
+      - redis
+      - rabbitmq
+    networks:
+      - architect-net
+
+volumes:
+  postgres_data:
+  redis_data:
+  rabbitmq_data:
+
+networks:
+  architect-net:
+    driver: bridge

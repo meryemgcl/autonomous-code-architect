@@ -1,0 +1,13 @@
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Contracts\obj\Debug\net9.0\Architect.Contracts.csproj.AssemblyReference.cache
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Contracts\obj\Debug\net9.0\Architect.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Contracts\bin\Debug\net9.0\Architect.Contracts.deps.json
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Contracts\bin\Debug\net9.0\Architect.Contracts.dll
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Contracts\bin\Debug\net9.0\Architect.Contracts.pdb
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Contracts\obj\Debug\net9.0\Architect.Contracts.AssemblyInfoInputs.cache
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Contracts\obj\Debug\net9.0\Architect.Contracts.AssemblyInfo.cs
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Contracts\obj\Debug\net9.0\Architect.Contracts.csproj.CoreCompileInputs.cache
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Contracts\obj\Debug\net9.0\Architect.Contracts.sourcelink.json
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Contracts\obj\Debug\net9.0\Architect.Contracts.dll
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Contracts\obj\Debug\net9.0\refint\Architect.Contracts.dll
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Contracts\obj\Debug\net9.0\Architect.Contracts.pdb
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Contracts\obj\Debug\net9.0\ref\Architect.Contracts.dll

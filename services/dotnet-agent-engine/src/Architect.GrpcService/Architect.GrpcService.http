@@ -1,0 +1,6 @@
+@Architect.GrpcService_HostAddress = http://localhost:5128
+
+GET {{Architect.GrpcService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

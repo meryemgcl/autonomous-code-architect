@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Grpc.AspNetCore" Version="2.67.0" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.0" />
+    <PackageReference Include="Scalar.AspNetCore" Version="2.0.18" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Architect.Contracts\Architect.Contracts.csproj" />
+    <ProjectReference Include="..\Architect.Core\Architect.Core.csproj" />
+    <ProjectReference Include="..\Architect.Application\Architect.Application.csproj" />
+    <ProjectReference Include="..\Architect.RoslynParser\Architect.RoslynParser.csproj" />
+    <ProjectReference Include="..\Architect.Agents\Architect.Agents.csproj" />
+    <ProjectReference Include="..\Architect.Infrastructure\Architect.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
