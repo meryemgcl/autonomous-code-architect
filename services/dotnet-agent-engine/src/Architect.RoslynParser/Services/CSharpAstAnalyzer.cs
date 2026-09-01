@@ -28,7 +28,10 @@ public class CSharpAstAnalyzer : ICSharpAstAnalyzer
                 new EmptyCatchBlockRule(),
                 new LargeMethodRule(),
                 new HardcodedSecretRule(),
-                new CleanArchitectureBoundaryRule()
+                new CleanArchitectureBoundaryRule(),
+                new MagicNumberRule(),
+                new NullReturnFromPublicMethodRule(),
+                new StaticMutableFieldRule()
             };
         }
         else

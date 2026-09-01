@@ -1,6 +1,6 @@
-## .NET / C#
-bin/
-obj/
+## .NET / C# — Derlenmiş çıktılar
+**/bin/
+**/obj/
 *.user
 *.suo
 *.userosscache
@@ -9,6 +9,9 @@ obj/
 TestResults/
 [Dd]ebug/
 [Rr]elease/
+*.nupkg
+*.snupkg
+publish/
 
 ## Java / Maven
 target/
@@ -21,6 +24,9 @@ mvnw
 mvnw.cmd
 .gradle/
 build/
+.classpath
+.project
+.settings/
 
 ## IDEs & Editors
 .idea/
@@ -40,3 +46,15 @@ postgres_data/
 redis_data/
 rabbitmq_data/
 *.log
+
+## Gizlilik & Güvenlik
+*.env
+.env.*
+appsettings.Development.json
+secrets/
+*.pfx
+*.p12
+*.key
+
+## CI/CD
+.github/workflows/secrets

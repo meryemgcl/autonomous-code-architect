@@ -34,14 +34,13 @@ public class ArbiterAgent : IArbiterAgent
 
     public async Task<DebateConsensus> ConductDebateAsync(DebateContext context, CancellationToken cancellationToken = default)
     {
-        var opinions = new List<AgentOpinion>();
+        // FAZ D: Task.WhenAll ile tüm ajanlar paralel çalışır (~3x hızlanma)
+        var agentTasks = _specialists
+            .Select(specialist => specialist.EvaluateAsync(context, cancellationToken))
+            .ToList();
 
-        // 1. Tüm uzman ajanlar paralel olarak kodu ve AST bulgularını inceler
-        foreach (var specialist in _specialists)
-        {
-            var opinion = await specialist.EvaluateAsync(context, cancellationToken);
-            opinions.Add(opinion);
-        }
+        var opinionArray = await Task.WhenAll(agentTasks);
+        var opinions = opinionArray.ToList();
 
         // 2. Fikir Çatışması ve Uzlaşı Analizi (Debate Resolution)
         var securityOpinion = opinions.FirstOrDefault(o => o.AgentName == "SecurityAgent");
