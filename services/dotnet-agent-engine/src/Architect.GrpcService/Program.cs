@@ -5,6 +5,7 @@ using Architect.Agents.Specialists;
 using Architect.Core.Models;
 using Architect.GrpcService.Services;
 using Architect.Infrastructure.Memory;
+using Architect.RoslynParser.Remediation;
 using Architect.RoslynParser.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
@@ -31,6 +32,7 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddSingleton<IVectorMemoryService, VectorMemoryService>();
 builder.Services.AddSingleton<ICSharpAstAnalyzer, CSharpAstAnalyzer>();
+builder.Services.AddSingleton<ISelfHealingRemediationEngine, SelfHealingRemediationEngine>();
 
 builder.Services.AddSingleton<IAgent, ReviewerAgent>();
 builder.Services.AddSingleton<IAgent, SecurityAgent>();
@@ -59,6 +61,7 @@ app.MapGet("/api/v1/health", () => Results.Ok(new
     Status = "Healthy",
     Version = "1.0.0-net9",
     RagVectorMemory = "Active",
+    SelfHealingEngine = "Active",
     InteractiveWebDashboard = "http://localhost:5000",
     Timestamp = DateTimeOffset.UtcNow
 }));
@@ -89,7 +92,15 @@ app.MapPost("/api/v1/debate", async ([FromBody] AnalysisRequestDto request, ICSh
     return Results.Ok(consensus);
 });
 
-// 5. RAG Kurumsal Vektör Hafızası Arama Endpoint'i
+// 5. REST Otonom Kendi Kendini Onarma Endpoint'i (Self-Healing AST Rewriter)
+app.MapPost("/api/v1/remediate", ([FromBody] AnalysisRequestDto request, ISelfHealingRemediationEngine healingEngine) =>
+{
+    var requestId = request.RequestId ?? Guid.NewGuid().ToString();
+    var result = healingEngine.RemediateSourceCode(requestId, request.FilePath ?? "sample.cs", request.SourceCode ?? string.Empty);
+    return Results.Ok(result);
+});
+
+// 6. RAG Kurumsal Vektör Hafızası Arama Endpoint'i
 app.MapGet("/api/v1/memory/rules", async ([FromQuery] string query, IVectorMemoryService vectorMemory) =>
 {
     var rules = await vectorMemory.FindRelevantRulesAsync(query ?? "Clean Architecture");
