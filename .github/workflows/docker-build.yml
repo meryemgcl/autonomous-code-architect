@@ -1,0 +1,40 @@
+name: Docker Multi-Stage Build & Health Validation
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'services/**'
+      - 'deploy/**'
+      - 'shared/**'
+      - '.github/workflows/docker-build.yml'
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  docker-validation:
+    name: Build & Validate Multi-Stage Containers
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: Build .NET 9 Engine Docker Image
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        file: ./services/dotnet-agent-engine/Dockerfile
+        push: false
+        tags: architect-dotnet-engine:ci-test
+
+    - name: Build Java Spring Boot 3 Gateway Docker Image
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        file: ./services/java-gateway-analyzer/Dockerfile
+        push: false
+        tags: architect-java-gateway:ci-test

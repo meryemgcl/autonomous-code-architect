@@ -1,0 +1,37 @@
+name: .NET 9 CI Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'services/dotnet-agent-engine/**'
+      - 'shared/protos/**'
+      - '.github/workflows/ci-dotnet.yml'
+  pull_request:
+    branches: [ "main" ]
+    paths:
+      - 'services/dotnet-agent-engine/**'
+      - 'shared/protos/**'
+
+jobs:
+  build-and-test:
+    name: Build, AST Test & Validate .NET Engine
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup .NET 9 SDK
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '9.0.x'
+
+    - name: Restore dependencies
+      run: dotnet restore services/dotnet-agent-engine/ArchitectEngine.sln
+
+    - name: Build Solution (Release)
+      run: dotnet build services/dotnet-agent-engine/ArchitectEngine.sln --configuration Release --no-restore
+
+    - name: Run xUnit Unit & Roslyn AST Tests
+      run: dotnet test services/dotnet-agent-engine/ArchitectEngine.sln --configuration Release --no-build --verbosity normal --collect:"XPlat Code Coverage"

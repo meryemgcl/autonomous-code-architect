@@ -143,3 +143,5 @@ C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dot
 C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\tests\Architect.RoslynParser.Tests\obj\Debug\net9.0\Architect.RoslynParser.Tests.pdb
 C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\tests\Architect.RoslynParser.Tests\obj\Debug\net9.0\Architect.RoslynParser.Tests.genruntimeconfig.cache
 C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\tests\Architect.RoslynParser.Tests\obj\Debug\net9.0\ref\Architect.RoslynParser.Tests.dll
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\tests\Architect.RoslynParser.Tests\bin\Debug\net9.0\Architect.Infrastructure.dll
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\tests\Architect.RoslynParser.Tests\bin\Debug\net9.0\Architect.Infrastructure.pdb

@@ -42,6 +42,9 @@
               "C:\\Users\\HP\\Desktop\\projeler\\meryem_guclu\\autonomous-code-architect\\services\\dotnet-agent-engine\\src\\Architect.Core\\Architect.Core.csproj": {
                 "projectPath": "C:\\Users\\HP\\Desktop\\projeler\\meryem_guclu\\autonomous-code-architect\\services\\dotnet-agent-engine\\src\\Architect.Core\\Architect.Core.csproj"
               },
+              "C:\\Users\\HP\\Desktop\\projeler\\meryem_guclu\\autonomous-code-architect\\services\\dotnet-agent-engine\\src\\Architect.Infrastructure\\Architect.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\HP\\Desktop\\projeler\\meryem_guclu\\autonomous-code-architect\\services\\dotnet-agent-engine\\src\\Architect.Infrastructure\\Architect.Infrastructure.csproj"
+              },
               "C:\\Users\\HP\\Desktop\\projeler\\meryem_guclu\\autonomous-code-architect\\services\\dotnet-agent-engine\\src\\Architect.RoslynParser\\Architect.RoslynParser.csproj": {
                 "projectPath": "C:\\Users\\HP\\Desktop\\projeler\\meryem_guclu\\autonomous-code-architect\\services\\dotnet-agent-engine\\src\\Architect.RoslynParser\\Architect.RoslynParser.csproj"
               }
@@ -427,7 +430,11 @@
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\HP\\Desktop\\projeler\\meryem_guclu\\autonomous-code-architect\\services\\dotnet-agent-engine\\src\\Architect.Core\\Architect.Core.csproj": {
+                "projectPath": "C:\\Users\\HP\\Desktop\\projeler\\meryem_guclu\\autonomous-code-architect\\services\\dotnet-agent-engine\\src\\Architect.Core\\Architect.Core.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

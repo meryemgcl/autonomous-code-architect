@@ -1,0 +1,42 @@
+## .NET / C#
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vs/
+TestResults/
+[Dd]ebug/
+[Rr]elease/
+
+## Java / Maven
+target/
+*.class
+*.jar
+*.war
+*.ear
+.mvn/wrapper/
+mvnw
+mvnw.cmd
+.gradle/
+build/
+
+## IDEs & Editors
+.idea/
+*.iml
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+## Docker & Local Infra
+postgres_data/
+redis_data/
+rabbitmq_data/
+*.log

@@ -4,6 +4,7 @@ import com.architect.gateway.analyzer.JavaAstAnalyzer;
 import com.architect.gateway.config.RabbitMqConfig;
 import com.architect.gateway.dto.AnalysisDtos.RequestDto;
 import com.architect.gateway.dto.AnalysisDtos.ResponseDto;
+import com.architect.gateway.grpc.DotnetGrpcClient;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -20,6 +21,7 @@ import java.util.UUID;
 public class WebhookController {
 
     private final JavaAstAnalyzer javaAstAnalyzer;
+    private final DotnetGrpcClient dotnetGrpcClient;
     private final RabbitTemplate rabbitTemplate;
 
     @GetMapping("/health")
@@ -31,7 +33,7 @@ public class WebhookController {
         ));
     }
 
-    // Doğrudan Senkron Kod Analiz Endpoint'i
+    // Doğrudan Senkron Kod Analiz Endpoint'i (Çok Dilli: Java veya .NET gRPC)
     @PostMapping("/analyze/sync")
     public ResponseEntity<ResponseDto> analyzeSync(@RequestBody RequestDto request) {
         if (request.getRequestId() == null) {
@@ -40,6 +42,7 @@ public class WebhookController {
 
         log.info("Received sync analysis request for file: {}", request.getFilePath());
 
+        // Java AST Analizi
         if ("JAVA".equalsIgnoreCase(request.getLanguage()) || 
             (request.getFilePath() != null && request.getFilePath().endsWith(".java"))) {
             ResponseDto response = javaAstAnalyzer.analyzeJavaSource(
@@ -50,11 +53,22 @@ public class WebhookController {
             return ResponseEntity.ok(response);
         }
 
-        // C# veya diğer diller için RabbitMQ üzerinden .NET servisine yönlendirilir
+        // C# AST Analizi -> .NET 9 servisine gRPC köprüsü ile iletilir
+        if ("CSHARP".equalsIgnoreCase(request.getLanguage()) || 
+            (request.getFilePath() != null && request.getFilePath().endsWith(".cs"))) {
+            ResponseDto response = dotnetGrpcClient.analyzeCSharpCode(
+                    request.getRequestId(),
+                    request.getFilePath(),
+                    request.getSourceCode(),
+                    request.isEnableAiAgents()
+            );
+            return ResponseEntity.ok(response);
+        }
+
         return ResponseEntity.badRequest().body(ResponseDto.builder()
                 .requestId(request.getRequestId())
                 .success(false)
-                .errorMessage("Language not handled synchronously by Java engine. Use async webhook queue.")
+                .errorMessage("Unsupported language. Supported: JAVA, CSHARP")
                 .build());
     }
 
@@ -69,7 +83,6 @@ public class WebhookController {
 
         log.info("Ingested GitHub webhook event: {}, Request ID: {}", eventType, requestId);
 
-        // RabbitMQ'ya kuyruğa at (Event-Driven Dağıtık İşlem)
         String routingKey = "JAVA".equalsIgnoreCase(request.getLanguage())
                 ? RabbitMqConfig.ROUTING_KEY_JAVA
                 : RabbitMqConfig.ROUTING_KEY_DOTNET;

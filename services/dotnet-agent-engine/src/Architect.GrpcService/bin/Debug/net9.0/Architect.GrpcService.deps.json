@@ -294,6 +294,7 @@
           "Architect.Application": "1.0.0",
           "Architect.Contracts": "1.0.0",
           "Architect.Core": "1.0.0",
+          "Architect.Infrastructure": "1.0.0",
           "Architect.RoslynParser": "1.0.0"
         },
         "runtime": {
@@ -332,6 +333,9 @@
         }
       },
       "Architect.Infrastructure/1.0.0": {
+        "dependencies": {
+          "Architect.Core": "1.0.0"
+        },
         "runtime": {
           "Architect.Infrastructure.dll": {
             "assemblyVersion": "1.0.0.0",

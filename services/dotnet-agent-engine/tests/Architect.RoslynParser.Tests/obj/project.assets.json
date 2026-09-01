@@ -743,6 +743,19 @@
           "bin/placeholder/Architect.Core.dll": {}
         }
       },
+      "Architect.Infrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "Architect.Core": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Architect.Infrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Architect.Infrastructure.dll": {}
+        }
+      },
       "Architect.RoslynParser/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
@@ -2279,6 +2292,11 @@
       "path": "../../src/Architect.Core/Architect.Core.csproj",
       "msbuildProject": "../../src/Architect.Core/Architect.Core.csproj"
     },
+    "Architect.Infrastructure/1.0.0": {
+      "type": "project",
+      "path": "../../src/Architect.Infrastructure/Architect.Infrastructure.csproj",
+      "msbuildProject": "../../src/Architect.Infrastructure/Architect.Infrastructure.csproj"
+    },
     "Architect.RoslynParser/1.0.0": {
       "type": "project",
       "path": "../../src/Architect.RoslynParser/Architect.RoslynParser.csproj",
@@ -2288,6 +2306,7 @@
   "projectFileDependencyGroups": {
     "net9.0": [
       "Architect.Core >= 1.0.0",
+      "Architect.Infrastructure >= 1.0.0",
       "Architect.RoslynParser >= 1.0.0",
       "FluentAssertions >= 7.0.0",
       "Microsoft.NET.Test.Sdk >= 17.12.0",
@@ -2331,6 +2350,9 @@
           "projectReferences": {
             "C:\\Users\\HP\\Desktop\\projeler\\meryem_guclu\\autonomous-code-architect\\services\\dotnet-agent-engine\\src\\Architect.Core\\Architect.Core.csproj": {
               "projectPath": "C:\\Users\\HP\\Desktop\\projeler\\meryem_guclu\\autonomous-code-architect\\services\\dotnet-agent-engine\\src\\Architect.Core\\Architect.Core.csproj"
+            },
+            "C:\\Users\\HP\\Desktop\\projeler\\meryem_guclu\\autonomous-code-architect\\services\\dotnet-agent-engine\\src\\Architect.Infrastructure\\Architect.Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\HP\\Desktop\\projeler\\meryem_guclu\\autonomous-code-architect\\services\\dotnet-agent-engine\\src\\Architect.Infrastructure\\Architect.Infrastructure.csproj"
             },
             "C:\\Users\\HP\\Desktop\\projeler\\meryem_guclu\\autonomous-code-architect\\services\\dotnet-agent-engine\\src\\Architect.RoslynParser\\Architect.RoslynParser.csproj": {
               "projectPath": "C:\\Users\\HP\\Desktop\\projeler\\meryem_guclu\\autonomous-code-architect\\services\\dotnet-agent-engine\\src\\Architect.RoslynParser\\Architect.RoslynParser.csproj"

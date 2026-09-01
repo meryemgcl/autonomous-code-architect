@@ -20,3 +20,5 @@ C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dot
 C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Agents\obj\Debug\net9.0\refint\Architect.Agents.dll
 C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Agents\obj\Debug\net9.0\Architect.Agents.pdb
 C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Agents\obj\Debug\net9.0\ref\Architect.Agents.dll
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Agents\bin\Debug\net9.0\Architect.Infrastructure.dll
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Agents\bin\Debug\net9.0\Architect.Infrastructure.pdb

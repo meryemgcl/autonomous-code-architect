@@ -11,6 +11,7 @@
     <ProjectReference Include="..\Architect.Application\Architect.Application.csproj" />
     <ProjectReference Include="..\Architect.RoslynParser\Architect.RoslynParser.csproj" />
     <ProjectReference Include="..\Architect.Contracts\Architect.Contracts.csproj" />
+    <ProjectReference Include="..\Architect.Infrastructure\Architect.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

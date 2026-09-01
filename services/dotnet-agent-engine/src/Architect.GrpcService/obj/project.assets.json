@@ -516,6 +516,7 @@
           "Architect.Application": "1.0.0",
           "Architect.Contracts": "1.0.0",
           "Architect.Core": "1.0.0",
+          "Architect.Infrastructure": "1.0.0",
           "Architect.RoslynParser": "1.0.0"
         },
         "compile": {
@@ -562,6 +563,9 @@
       "Architect.Infrastructure/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "Architect.Core": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/Architect.Infrastructure.dll": {}
         },

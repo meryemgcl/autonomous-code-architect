@@ -19,6 +19,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\Architect.RoslynParser\Architect.RoslynParser.csproj" />
     <ProjectReference Include="..\..\src\Architect.Core\Architect.Core.csproj" />
+    <ProjectReference Include="..\..\src\Architect.Infrastructure\Architect.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>

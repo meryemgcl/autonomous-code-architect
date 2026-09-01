@@ -4,33 +4,34 @@ using Architect.Agents.Orchestrator;
 using Architect.Agents.Specialists;
 using Architect.Core.Models;
 using Architect.GrpcService.Services;
+using Architect.Infrastructure.Memory;
 using Architect.RoslynParser.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Kestrel'i hem gRPC (HTTP/2) hem de REST (HTTP/1.1) isteklerini karşılayacak şekilde yapılandır
+// Kestrel Yapılandırması (HTTP/1.1 REST & HTTP/2 gRPC)
 builder.WebHost.ConfigureKestrel(options =>
 {
-    // REST API & OpenAPI
     options.ListenAnyIP(5000, listenOptions =>
     {
         listenOptions.Protocols = HttpProtocols.Http1AndHttp2;
     });
 
-    // Dedicated gRPC Endpoints
     options.ListenAnyIP(5001, listenOptions =>
     {
         listenOptions.Protocols = HttpProtocols.Http2;
     });
 });
 
-// Dependency Injection
+// Dependency Injection (Clean Architecture)
 builder.Services.AddGrpc();
 builder.Services.AddOpenApi();
 
+builder.Services.AddSingleton<IVectorMemoryService, VectorMemoryService>();
 builder.Services.AddSingleton<ICSharpAstAnalyzer, CSharpAstAnalyzer>();
+
 builder.Services.AddSingleton<IAgent, ReviewerAgent>();
 builder.Services.AddSingleton<IAgent, SecurityAgent>();
 builder.Services.AddSingleton<IAgent, QaTestWriterAgent>();
@@ -52,6 +53,7 @@ app.MapGet("/api/v1/health", () => Results.Ok(new
     Service = "dotnet-agent-engine",
     Status = "Healthy",
     Version = "1.0.0-net9",
+    RagVectorMemory = "Active",
     Timestamp = DateTimeOffset.UtcNow
 }));
 
@@ -63,7 +65,7 @@ app.MapPost("/api/v1/analyze", ([FromBody] AnalysisRequestDto request, ICSharpAs
     return Results.Ok(result);
 });
 
-// 4. REST Otonom Ajan Tartışması & Uzlaşı Endpoint'i (AutoGPT Mode)
+// 4. REST Otonom Ajan Tartışması & Uzlaşı Endpoint'i (AutoGPT + RAG Mode)
 app.MapPost("/api/v1/debate", async ([FromBody] AnalysisRequestDto request, ICSharpAstAnalyzer analyzer, IArbiterAgent arbiter) =>
 {
     var requestId = request.RequestId ?? Guid.NewGuid().ToString();
@@ -79,6 +81,13 @@ app.MapPost("/api/v1/debate", async ([FromBody] AnalysisRequestDto request, ICSh
 
     var consensus = await arbiter.ConductDebateAsync(context);
     return Results.Ok(consensus);
+});
+
+// 5. RAG Kurumsal Vektör Hafızası Arama Endpoint'i
+app.MapGet("/api/v1/memory/rules", async ([FromQuery] string query, IVectorMemoryService vectorMemory) =>
+{
+    var rules = await vectorMemory.FindRelevantRulesAsync(query ?? "Clean Architecture");
+    return Results.Ok(rules);
 });
 
 app.Run();

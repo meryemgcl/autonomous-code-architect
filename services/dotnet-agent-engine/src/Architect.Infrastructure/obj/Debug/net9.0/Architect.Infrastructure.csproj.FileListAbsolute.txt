@@ -10,3 +10,7 @@ C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dot
 C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Infrastructure\obj\Debug\net9.0\refint\Architect.Infrastructure.dll
 C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Infrastructure\obj\Debug\net9.0\Architect.Infrastructure.pdb
 C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Infrastructure\obj\Debug\net9.0\ref\Architect.Infrastructure.dll
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Infrastructure\bin\Debug\net9.0\Architect.Core.dll
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Infrastructure\bin\Debug\net9.0\Architect.Core.pdb
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Infrastructure\obj\Debug\net9.0\Architect.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.Infrastructure\obj\Debug\net9.0\Architec.A4CC324E.Up2Date

@@ -7,14 +7,30 @@
   "targets": {
     ".NETCoreApp,Version=v9.0": {
       "Architect.Infrastructure/1.0.0": {
+        "dependencies": {
+          "Architect.Core": "1.0.0"
+        },
         "runtime": {
           "Architect.Infrastructure.dll": {}
+        }
+      },
+      "Architect.Core/1.0.0": {
+        "runtime": {
+          "Architect.Core.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }
   },
   "libraries": {
     "Architect.Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Architect.Core/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
