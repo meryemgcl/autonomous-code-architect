@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autonomous Code Architect - Multi-Agent Live Arena</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-base: #0a0e17;
+            --bg-card: rgba(18, 26, 43, 0.85);
+            --border-card: rgba(45, 62, 98, 0.5);
+            --accent-cyan: #00f0ff;
+            --accent-purple: #9d4edd;
+            --accent-green: #00ff88;
+            --accent-red: #ff3366;
+            --accent-yellow: #ffb703;
+            --text-main: #f0f4fc;
+            --text-muted: #8a99b5;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at top right, #131b2e 0%, #0a0e17 100%);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 24px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-card);
+            margin-bottom: 24px;
+        }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .logo-icon {
+            font-size: 32px;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h1 {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .tagline {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .badges {
+            display: flex;
+            gap: 10px;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-card);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .badge-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent-green);
+            box-shadow: 0 0 8px var(--accent-green);
+        }
+
+        /* Grid Layout */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 24px;
+        }
+
+        @media (max-width: 1024px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 16px;
+            padding: 20px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .card-title {
+            font-size: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--accent-cyan);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Code Editor Area */
+        .editor-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        input[type="text"], select {
+            background: rgba(10, 14, 23, 0.8);
+            border: 1px solid var(--border-card);
+            color: var(--text-main);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-family: 'Fira Code', monospace;
+            outline: none;
+        }
+
+        input[type="text"] {
+            flex-grow: 1;
+        }
+
+        textarea {
+            width: 100%;
+            height: 280px;
+            background: #080c14;
+            border: 1px solid var(--border-card);
+            color: #d1dcfa;
+            font-family: 'Fira Code', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            padding: 14px;
+            border-radius: 10px;
+            resize: vertical;
+            outline: none;
+            white-space: pre;
+        }
+
+        textarea:focus {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 12px rgba(0, 240, 255, 0.2);
+        }
+
+        .action-bar {
+            display: flex;
+            gap: 12px;
+            margin-top: 14px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px 18px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00f0ff, #0077b6);
+            color: #04101e;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 240, 255, 0.4);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #9d4edd, #5a189a);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(157, 78, 221, 0.4);
+        }
+
+        /* Metrics HUD */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .metric-box {
+            background: rgba(10, 14, 23, 0.7);
+            border: 1px solid var(--border-card);
+            border-radius: 12px;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 22px;
+            font-weight: 900;
+            color: var(--accent-cyan);
+            font-family: 'Fira Code', monospace;
+        }
+
+        .metric-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-top: 4px;
+            font-weight: 600;
+        }
+
+        /* Multi-Agent Arena Cards */
+        .agent-council-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .agent-card {
+            background: rgba(10, 14, 23, 0.75);
+            border: 1px solid var(--border-card);
+            border-radius: 12px;
+            padding: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .agent-card.active {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+        }
+
+        .agent-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .agent-name {
+            font-weight: 700;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .agent-status {
+            font-size: 10px;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-weight: 700;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .status-approve { background: rgba(0, 255, 136, 0.15); color: var(--accent-green); border: 1px solid var(--accent-green); }
+        .status-reject { background: rgba(255, 51, 102, 0.15); color: var(--accent-red); border: 1px solid var(--accent-red); }
+        .status-generated { background: rgba(0, 240, 255, 0.15); color: var(--accent-cyan); border: 1px solid var(--accent-cyan); }
+
+        /* Output Tabs & Content */
+        .tabs {
+            display: flex;
+            gap: 8px;
+            border-bottom: 1px solid var(--border-card);
+            margin-bottom: 14px;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            padding: 8px 14px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .tab-btn.active {
+            color: var(--accent-cyan);
+            border-bottom-color: var(--accent-cyan);
+        }
+
+        .tab-pane {
+            display: none;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
+
+        .output-box {
+            background: #080c14;
+            border: 1px solid var(--border-card);
+            border-radius: 10px;
+            padding: 16px;
+            font-family: 'Fira Code', monospace;
+            font-size: 12px;
+            color: #d1dcfa;
+            max-height: 280px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            line-height: 1.5;
+        }
+
+        /* Progress bar */
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 2px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Header -->
+    <header>
+        <div class="logo-group">
+            <div class="logo-icon">🏛️</div>
+            <div>
+                <h1>Autonomous Code Architect</h1>
+                <div class="tagline">Multi-Agent Code Review & AST Compiler Arena</div>
+            </div>
+        </div>
+        <div class="badges">
+            <div class="badge"><span class="badge-dot"></span> .NET 9 Roslyn Engine</div>
+            <div class="badge"><span class="badge-dot"></span> Java 21 Spring Boot</div>
+            <div class="badge"><span class="badge-dot"></span> RAG Vector Memory</div>
+        </div>
+    </header>
+
+    <!-- Main Grid -->
+    <div class="main-grid">
+        <!-- Left Column: Source Code Editor -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">💻 Source Code & AST Input</div>
+                <select id="presetSelector" onchange="loadPreset()">
+                    <option value="violation">Örnek: Clean Architecture & Security İhlali</option>
+                    <option value="complex">Örnek: Yüksek Karmaşıklık & Büyük Metod</option>
+                    <option value="clean">Örnek: Temiz & Standartlara Uygun Kod</option>
+                </select>
+            </div>
+
+            <div class="editor-controls">
+                <input type="text" id="filePath" value="src/Domain/Orders/OrderService.cs">
+                <select id="languageSelector">
+                    <option value="CSHARP">C# (.NET 9)</option>
+                    <option value="JAVA">Java (Spring Boot 3)</option>
+                </select>
+            </div>
+
+            <textarea id="sourceCode" spellcheck="false"></textarea>
+
+            <div class="action-bar">
+                <button class="btn btn-primary" onclick="runDeterministicAnalysis()">
+                    ⚡ Hızlı AST Analizi (0 AI Maliyeti)
+                </button>
+                <button class="btn btn-secondary" onclick="runAgentDebate()">
+                    🤖 Otonom Ajan Çatışması (AutoGPT)
+                </button>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" id="progressBar"></div></div>
+        </div>
+
+        <!-- Right Column: Multi-Agent Arena & Metrics HUD -->
+        <div class="card">
+            <!-- Metrics HUD -->
+            <div class="metrics-grid">
+                <div class="metric-box">
+                    <div class="metric-value" id="locMetric">-</div>
+                    <div class="metric-label">Satır (LOC)</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value" id="ccMetric">-</div>
+                    <div class="metric-label">Karmaşıklık (CC)</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value" id="miMetric">-</div>
+                    <div class="metric-label">Bakım Skoru</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value" id="violationsMetric">-</div>
+                    <div class="metric-label">İhlal Sayısı</div>
+                </div>
+            </div>
+
+            <!-- Agent Council Cards -->
+            <div class="agent-council-grid">
+                <div class="agent-card" id="agentReviewer">
+                    <div class="agent-header">
+                        <span class="agent-name">🧐 ReviewerAgent</span>
+                        <span class="agent-status" id="statusReviewer">BEKLİYOR</span>
+                    </div>
+                    <div style="font-size: 11px; color: var(--text-muted);">SOLID & Clean Architecture</div>
+                </div>
+
+                <div class="agent-card" id="agentSecurity">
+                    <div class="agent-header">
+                        <span class="agent-name">🛡️ SecurityAgent</span>
+                        <span class="agent-status" id="statusSecurity">BEKLİYOR</span>
+                    </div>
+                    <div style="font-size: 11px; color: var(--text-muted);">OWASP & Secrets Auditor</div>
+                </div>
+
+                <div class="agent-card" id="agentQA">
+                    <div class="agent-header">
+                        <span class="agent-name">🧪 QaTestWriterAgent</span>
+                        <span class="agent-status" id="statusQA">BEKLİYOR</span>
+                    </div>
+                    <div style="font-size: 11px; color: var(--text-muted);">xUnit / JUnit Synthesizer</div>
+                </div>
+
+                <div class="agent-card" id="agentArbiter">
+                    <div class="agent-header">
+                        <span class="agent-name">⚖️ ArbiterAgent</span>
+                        <span class="agent-status" id="statusArbiter">BEKLİYOR</span>
+                    </div>
+                    <div style="font-size: 11px; color: var(--text-muted);">Debate Arbiter & Consensus</div>
+                </div>
+            </div>
+
+            <!-- Output Tabs -->
+            <div class="tabs">
+                <button class="tab-btn active" onclick="switchTab('tabConsensus', this)">🏛️ Hakem Kararı</button>
+                <button class="tab-btn" onclick="switchTab('tabTests', this)">🧪 Üretilen Test Kodu</button>
+                <button class="tab-btn" onclick="switchTab('tabPatches', this)">🔧 Düzeltme Yaması</button>
+                <button class="tab-btn" onclick="switchTab('tabViolations', this)">📋 AST İhlalleri</button>
+            </div>
+
+            <div id="tabConsensus" class="tab-pane active">
+                <div class="output-box" id="consensusOutput">Analiz başlatılmadı. Kodunuzu girin ve yukarıdaki butonlardan birine tıklayın.</div>
+            </div>
+
+            <div id="tabTests" class="tab-pane">
+                <div class="output-box" id="testsOutput">// Otomatik oluşturulan birim testleri burada belirecek.</div>
+            </div>
+
+            <div id="tabPatches" class="tab-pane">
+                <div class="output-box" id="patchesOutput">// Önerilen refactoring yaması burada belirecek.</div>
+            </div>
+
+            <div id="tabViolations" class="tab-pane">
+                <div class="output-box" id="violationsOutput">// Deterministik derleyici ihlalleri burada listelenecek.</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const presets = {
+        violation: `namespace MyCompany.Domain.Orders;
+
+using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Threading.Tasks;
+
+public class OrderService
+{
+    private string dbApiKey = "sk_live_998877665544332211";
+
+    public async void ProcessPaymentAsync()
+    {
+        try
+        {
+            await Task.Delay(50);
+        }
+        catch (Exception)
+        {
+        }
+    }
+}`,
+        complex: `public class DataTransformer
+{
+    public void Process(int a, int b, int c, bool flag)
+    {
+        if (a > 0 && b > 0)
+        {
+            while (a > 0)
+            {
+                if (c == 10 || flag) { a--; }
+                else { a -= 2; }
+            }
+        }
+        else if (b < 0)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                var x = flag ? 1 : 2;
+            }
+        }
+    }
+}`,
+        clean: `namespace MyCompany.Domain.Orders;
+
+using System;
+using System.Threading.Tasks;
+
+public class OrderService
+{
+    public async Task ProcessPaymentAsync(string transactionId)
+    {
+        if (string.IsNullOrWhiteSpace(transactionId))
+            throw new ArgumentNullException(nameof(transactionId));
+
+        await Task.CompletedTask;
+    }
+}`
+    };
+
+    function loadPreset() {
+        const val = document.getElementById('presetSelector').value;
+        document.getElementById('sourceCode').value = presets[val] || '';
+    }
+
+    function switchTab(tabId, btn) {
+        document.querySelectorAll('.tab-pane').forEach(el => el.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+        btn.classList.add('active');
+    }
+
+    async function runDeterministicAnalysis() {
+        setLoading(true);
+        const payload = {
+            filePath: document.getElementById('filePath').value,
+            language: document.getElementById('languageSelector').value,
+            sourceCode: document.getElementById('sourceCode').value
+        };
+
+        try {
+            const res = await fetch('/api/v1/analyze', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+            const data = await res.json();
+
+            updateMetrics(data.metrics, data.violations.length);
+            document.getElementById('violationsOutput').innerText = JSON.stringify(data.violations, null, 2);
+            document.getElementById('consensusOutput').innerText = `⚡ Hızlı Deterministik AST Analizi Tamamlandı (${data.executionTimeMs} ms)\n\nBulunan İhlal Sayısı: ${data.violations.length}\nKarmaşıklık: ${data.metrics.cyclomaticComplexity}`;
+            switchTab('tabViolations', document.querySelectorAll('.tab-btn')[3]);
+        } catch (e) {
+            alert('Hata: ' + e.message);
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    async function runAgentDebate() {
+        setLoading(true);
+        resetAgentCards();
+
+        const payload = {
+            filePath: document.getElementById('filePath').value,
+            language: document.getElementById('languageSelector').value,
+            sourceCode: document.getElementById('sourceCode').value
+        };
+
+        try {
+            const res = await fetch('/api/v1/debate', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+            const data = await res.json();
+
+            // Ajan Kartlarını Güncelle
+            data.opinions.forEach(op => {
+                if (op.agentName === 'ReviewerAgent') setAgentStatus('Reviewer', op.stance);
+                if (op.agentName === 'SecurityAgent') setAgentStatus('Security', op.stance);
+                if (op.agentName === 'QaTestWriterAgent') setAgentStatus('QA', op.stance);
+            });
+
+            setAgentStatus('Arbiter', data.requiresHumanApproval ? 'REJECTED' : 'APPROVED');
+
+            document.getElementById('consensusOutput').innerText = data.finalConsensusSummary;
+            document.getElementById('testsOutput').innerText = data.generatedUnitTestCode || '// Test üretilmedi';
+            document.getElementById('patchesOutput').innerText = data.suggestedRefactoredCode || '// Yama gerekmedi';
+
+            switchTab('tabConsensus', document.querySelectorAll('.tab-btn')[0]);
+        } catch (e) {
+            alert('Hata: ' + e.message);
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    function setAgentStatus(name, stance) {
+        const el = document.getElementById('status' + name);
+        const card = document.getElementById('agent' + name);
+        card.classList.add('active');
+        el.innerText = stance;
+        el.className = 'agent-status ' + (stance.includes('APPROVE') ? 'status-approve' : (stance.includes('REJECT') || stance.includes('NEEDS_SECURITY') || stance.includes('REQUEST') ? 'status-reject' : 'status-generated'));
+    }
+
+    function resetAgentCards() {
+        ['Reviewer', 'Security', 'QA', 'Arbiter'].forEach(name => {
+            const el = document.getElementById('status' + name);
+            const card = document.getElementById('agent' + name);
+            card.classList.remove('active');
+            el.innerText = 'ÇALIŞIYOR...';
+            el.className = 'agent-status';
+        });
+    }
+
+    function updateMetrics(metrics, violationCount) {
+        document.getElementById('locMetric').innerText = metrics.linesOfCode;
+        document.getElementById('ccMetric').innerText = metrics.cyclomaticComplexity;
+        document.getElementById('miMetric').innerText = metrics.maintainabilityIndex;
+        document.getElementById('violationsMetric').innerText = violationCount;
+    }
+
+    function setLoading(val) {
+        document.getElementById('progressBar').style.width = val ? '100%' : '0%';
+    }
+
+    window.onload = loadPreset;
+</script>
+
+</body>
+</html>

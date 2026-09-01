@@ -36,8 +36,13 @@ builder.Services.AddSingleton<IAgent, ReviewerAgent>();
 builder.Services.AddSingleton<IAgent, SecurityAgent>();
 builder.Services.AddSingleton<IAgent, QaTestWriterAgent>();
 builder.Services.AddSingleton<IArbiterAgent, ArbiterAgent>();
+builder.Services.AddSingleton<IStreamingArbiterAgent, StreamingArbiterAgent>();
 
 var app = builder.Build();
+
+// Static Web Dashboard UI
+app.UseDefaultFiles();
+app.UseStaticFiles();
 
 if (app.Environment.IsDevelopment())
 {
@@ -54,6 +59,7 @@ app.MapGet("/api/v1/health", () => Results.Ok(new
     Status = "Healthy",
     Version = "1.0.0-net9",
     RagVectorMemory = "Active",
+    InteractiveWebDashboard = "http://localhost:5000",
     Timestamp = DateTimeOffset.UtcNow
 }));
 

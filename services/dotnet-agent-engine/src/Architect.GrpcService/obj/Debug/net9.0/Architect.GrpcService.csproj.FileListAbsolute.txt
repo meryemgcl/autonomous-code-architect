@@ -79,3 +79,5 @@ C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dot
 C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.GrpcService\obj\Debug\net9.0\Architect.GrpcService.pdb
 C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.GrpcService\obj\Debug\net9.0\Architect.GrpcService.genruntimeconfig.cache
 C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.GrpcService\obj\Debug\net9.0\ref\Architect.GrpcService.dll
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.GrpcService\bin\Debug\net9.0\Architect.GrpcService.staticwebassets.runtime.json
+C:\Users\HP\Desktop\projeler\meryem_guclu\autonomous-code-architect\services\dotnet-agent-engine\src\Architect.GrpcService\obj\Debug\net9.0\compressed\oqh5yys80f-ef2fto7cbj.gz
